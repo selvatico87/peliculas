@@ -1,35 +1,45 @@
-import { useEffect } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 
 function Listado(){
-  
-  const  token = localStorage.getItem('token')
-  
+ 
+  const [movieList,setMovieList]=useState([])
   useEffect(()=>{
-    if (token===null){
-      <Link to={`/login`}/>
-    }
-  },[token])
-
+    const endPoint = 'http://api.themoviedb.org/3/discover/movie?api_key=c963b2c1865802b4fc57f70679b6a724&language=es-ES&trailer'
+    axios
+      .get(endPoint)
+      .then(response=>{
+        const apiData = response.data
+        setMovieList(apiData.results)
+      })
+  },[setMovieList])
+  
+  console.log(movieList)
+  
   
   return(
-  <div className="rom">
-    <div className="col-4">Pelicula 1</div>
-    <div className="col-4">Pelicula 2</div>
-    <div className="col-4">Pelicula 3</div>
-    <div className="col-4">Pelicula 4</div>
-
-    <div class="card" style={{width: '18rem'}}>
-      <img src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href='/' class="btn btn-primary">Ver trailer</a>
-    </div>
-</div>
-
-  </div>
+    <>
+      <div className="row">
+        {movieList.map((oneMovie, id)=>{
+          return(
+            <div className="col-4" key={id}>
+              <div className="card">
+                <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} className="card-img-top" alt="..."/>
+                <div className="card-body">
+                  <h5 className="card-title">{oneMovie.title.substring(0,30)}...</h5>
+                  <p className="card-text">{oneMovie.overview.substring(0,100)}...</p>
+                  {/* <p className="card-text">Año: </p> */}
+                  <Link to='/' className="btn btn-dark">Ver trailer</Link>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+        
+      </div>
+    </>
  )
 }
 

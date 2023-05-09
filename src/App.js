@@ -15,11 +15,13 @@ function App() {
   return (
     <Router>
       <Header/>
-      <Routes className='container mt-3'>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/listado' element={<Listado/>}/>
-      </Routes>
+      <div className='container mt-3'>
+        <Routes >
+          <Route path='/' element={<Home/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/listado' element={<Listado/>}/>
+        </Routes>
+      </div>
       <Footer/> 
     </Router>
   );

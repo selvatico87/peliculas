@@ -1,8 +1,7 @@
 /* eslint-disable no-useless-escape */
 import axios from 'axios';
 import swalert from '@sweetalert/with-react'
-import { Link } from 'react-router-dom'
-import Listado from './Listado';
+import { Navigate, redirect, useNavigate } from 'react-router-dom'
 
 function Login(){
   
@@ -28,15 +27,18 @@ function Login(){
       icon:"error"})
       return
     }
-    
-    axios
-      .post('http://challenge-react.alkemy.org',{email,password})
-      .then(res=>{
-        swalert({title:"Bien",text:"Allá vamos",icon:"success"})
-        const token = res.data.token;
-        localStorage.setItem('token', token);
-        <Link to={Listado}/>
-      })
+    if(email==="challenge@alkemy.org"||password==="react"){
+    swalert({title:"Bien",text:"Allá vamos",icon:"success"})
+    localStorage.setItem('user', email);
+    }
+    // axios
+    //   .post('http://challenge-react.alkemy.org',{email,password})
+    //   .then(res=>{
+    //     swalert({title:"Bien",text:"Allá vamos",icon:"success"})
+    //     const token = res.data.token;
+    //     localStorage.setItem('token', token);
+    //     <Navigate to={'/listado'}/>;
+    //   } )
   }
  return(
   <>
