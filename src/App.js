@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 
 //Styles
 import './css/bootstrap.min.css'
+import Detalle from './components/Detalle';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/listado' element={<Listado/>}/>
+          <Route path='/detalle' element={<Detalle/>}/>
         </Routes>
       </div>
       <Footer/> 
