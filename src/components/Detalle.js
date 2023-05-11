@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 
 function Detalle(){
+  
+  const token = sessionStorage.getItem('token')
+  
   return(
     <>
-      <Link to='/listado' className="btn btn-dark">Volver al listado</Link>
+      {!token && <Navigate to='/login'/>}
 
-    Detalle
+      <Link to='/listado' className="btn btn-dark">Volver al listado</Link>
+      Detalle
     </>
   )
 }

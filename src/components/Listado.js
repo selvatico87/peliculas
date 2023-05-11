@@ -1,19 +1,22 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import swalert from '@sweetalert/with-react'
 
 
 function Listado(){
- 
+  const token= sessionStorage.getItem('token')
+  
   const [movieList,setMovieList]=useState([])
+
   useEffect(()=>{
-    const endPoint = 'http://api.themoviedb.org/3/discover/movie?api_key=c963b2c1865802b4fc57f70679b6a724&language=es-ES&trailer'
+    const endPoint = 'http://api.themoviedb.org/3/discover/movie?api_key=c963b2c1865802b4fc57f70679b6a724&language=es-ES'
     axios
       .get(endPoint)
       .then(response=>{
         const apiData = response.data
         setMovieList(apiData.results)
+
       })
       .catch(error => {
         swalert({
@@ -29,6 +32,7 @@ function Listado(){
   
   return(
     <>
+      {!token && <Navigate to='/login'/>}
       <div className="row">
         {movieList.map((oneMovie, id)=>{
           return(
