@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom"
+import logo from '../img/logolargofondonegro.png'
+import '../css/app.css'
 
 function Header(){
   return (
   <header>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={'/'}>Vamos al Cine</Link>
+        <Link className="navbar-brand" to={'/'}>
+          <img src={logo} alt="Logo Vamos al Cine"  className="logoPrincipal d-inline-block align-text-top"/>
+        </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

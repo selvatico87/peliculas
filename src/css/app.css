@@ -1,4 +1,12 @@
 body{
-  background-color: salmon;
-  font-family: 'Comic Sans MS', Courier, monospace;
+  background-image: url("../img/fondo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Allerta', sans-serif;
 }
+
+.logoPrincipal{
+  max-width: 200px;
+  height: auto;
+}
+

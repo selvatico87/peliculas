@@ -2,7 +2,7 @@ import '../css/footer.css';
 
 function Footer(){
   return(
-    <footer>
+    <footer className='footer'>
       <nav>
         <ul>
           <li><a href="www.instagram.com" rel="noopener noreferrer">Instagram</a></li><br/>

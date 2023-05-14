@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 //Styles
 import './css/bootstrap.min.css'
 import Detalle from './components/Detalle';
+import './css/app.css';
 
 function App() {
   return (
