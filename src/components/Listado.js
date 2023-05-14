@@ -27,7 +27,7 @@ function Listado(){
       )
   },[setMovieList])
   
-  console.log(movieList)
+  // console.log(movieList)
   
   
   return(
